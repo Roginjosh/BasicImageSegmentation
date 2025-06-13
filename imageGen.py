@@ -1,7 +1,8 @@
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw
 import os
 import numpy as np
-import matplotlib.pyplot as plt
+
+
 
 NUM_SAMPLES = 100
 data = np.random.normal(loc=1, scale=1, size=NUM_SAMPLES)
@@ -17,6 +18,9 @@ bins = np.linspace(data.min(), data.max(), 10)
 rad = np.digitize(data, bins[1:-1]) 
 
 samples = np.array([x_pos, y_pos, rad+1])
+
+os.makedirs('data', exist_ok=True)
+
 
 if len(os.listdir(os.path.join('data'))) == 0:    
     for i in range(samples.shape[1]):
